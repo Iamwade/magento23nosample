@@ -1,0 +1,27 @@
+<?php
+/** @var \Akulov\ThreeFormsOfVerbs\Block\Forms $block */
+?>
+
+<table>
+    <tbody>
+        <?php foreach ($block->getItems() as $item): ?>
+            <tr>
+                <td>
+                    <?php echo $item->getId(); ?>
+                </td>
+                <td>
+                    <?php echo $item['translate']; ?>
+                </td>
+                <td>
+                    <?php echo $item['first']; ?>
+                </td>
+                <td>
+                    <?php echo $item['second']; ?>
+                </td>
+                <td>
+                    <?php echo $item['third']; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
