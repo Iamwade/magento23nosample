@@ -4,30 +4,37 @@
 <?php $items = $block->getItems(); ?>
 <?php $itemsRand = $block->getRandomItems(); ?>
 
-<table>
-    <tbody>
-    <?php foreach ($itemsRand as $itemRand): ?>
-        <?php foreach ($items as $item): ?>
-            <?php if ($item->getId() == $itemRand): ?>
-                <tr>
-                    <td>
-                        <?php echo $item->getId(); ?>
-                    </td>
-                    <td>
-                        <?php echo $item['translate']; ?>
-                    </td>
-                    <td>
-                        <?php echo $item['first']; ?>
-                    </td>
-                    <td>
-                        <?php echo $item['second']; ?>
-                    </td>
-                    <td>
-                        <?php echo $item['third']; ?>
-                    </td>
-                </tr>
-            <?php endif; ?>
+<form action="<?php echo $block->getFormAction() ?>" method="post">
+    <table>
+        <tbody>
+        <?php foreach ($itemsRand as $itemRand): ?>
+            <?php foreach ($items as $item): ?>
+                <?php if ($item->getId() == $itemRand): ?>
+                    <tr>
+                        <td>
+                            <?php echo $item->getId(); ?>
+                        </td>
+                        <td>
+                            <?php echo $item['translate']; ?>
+                        </td>
+                        <td>
+                            <?php echo $item['first']; ?>
+                            <input name="first<?php echo $item->getId(); ?>" type="text">
+                        </td>
+                        <td>
+                            <?php echo $item['second']; ?>
+                            <input name="second<?php echo $item->getId(); ?>" type="text">
+                        </td>
+                        <td>
+                            <?php echo $item['third']; ?>
+                            <input name="third<?php echo $item->getId(); ?>" type="text">
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            <?php endforeach; ?>
         <?php endforeach; ?>
-    <?php endforeach; ?>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+    <input name="bookingTime" type="date">
+    <input type="submit" value="Send booking informations">
+</form>

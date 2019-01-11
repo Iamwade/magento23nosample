@@ -32,4 +32,14 @@ class Forms extends Template
         $itemsRand = array_rand($items, 10);
         return $itemsRand;
     }
+
+    public function getFormAction()
+    {
+        // companymodule is given in routes.xml
+        // controller_name is folder name inside controller folder
+        // action is php file name inside above controller_name folder
+
+        return '/threeforms/post/post';
+        // here controller_name is index, action is booking
+    }
 }
