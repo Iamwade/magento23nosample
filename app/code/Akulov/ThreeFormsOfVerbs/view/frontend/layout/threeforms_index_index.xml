@@ -2,7 +2,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block name="threeforms_threeforms" class="Akulov\ThreeFormsOfVerbs\Block\Forms" template="forms.phtml"/>
+            <block name="threeforms_threeforms" class="Akulov\ThreeFormsOfVerbs\Block\Forms" template="forms.phtml" cacheable="false"/>
         </referenceContainer>
     </body>
 </page>

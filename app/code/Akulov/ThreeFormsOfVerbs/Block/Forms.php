@@ -25,4 +25,11 @@ class Forms extends Template
     {
         return $this->collectionFactory->create()->getItems();
     }
+
+    public function getRandomItems()
+    {
+        $items = $this->getItems();
+        $itemsRand = array_rand($items, 10);
+        return $itemsRand;
+    }
 }
