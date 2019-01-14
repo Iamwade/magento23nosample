@@ -4,5 +4,8 @@
         <route id="threeforms" frontName="threeforms">
             <module name="Akulov_ThreeFormsOfVerbs"/>
         </route>
+        <route id="result" frontName="result">
+            <module name="Akulov_ThreeFormsOfVerbs"/>
+        </route>
     </router>
 </config>

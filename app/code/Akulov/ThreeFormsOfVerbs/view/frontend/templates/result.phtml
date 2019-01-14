@@ -1,0 +1,96 @@
+<?php
+/** @var \Akulov\ThreeFormsOfVerbs\Block\Forms $block */
+?>
+<?php $items = $block->getItems(); ?>
+<?php $itemsRand = $block->getRandomItems(); ?>
+<?php $itemsPost = (array)$this->getRequest()->getPost(); ?>
+<?php $itemsPostChunk = array_chunk($itemsPost, 4); ?>
+<?php $i = 0; ?>
+
+<div class="forms-table">
+    <table>
+        <tbody>
+        <tr>
+            <td>
+                <?php echo "Number"; ?>
+            </td>
+            <td>
+                <?php echo "Translate"; ?>
+            </td>
+            <td>
+                <?php echo "First form"; ?>
+            </td>
+            <td>
+                <?php echo "Second form"; ?>
+            </td>
+            <td>
+                <?php echo "Third form"; ?>
+            </td>
+        </tr>
+            <?php foreach ($itemsPostChunk as $itemPost): ?>
+                <?php foreach ($items as $item): ?>
+                    <?php if ($item->getId() == $itemPost[$i]): ?>
+                        <tr>
+                            <td>
+                                <?php echo $itemPost[$i]; ?>
+                            </td>
+                            <td class="translate">
+                                <?php echo $item['translate']; ?>
+                            </td>
+                            <td>
+                                <?php if ($item['first'] == mb_strtolower($itemPost[1])): ?>
+                                <div class="correctly"><?php echo "Correctly <br>"; ?></div>
+                                    <?php echo $item['first']; ?>
+                                <?php else: ?>
+                                    <div class="no-correctly"><?php echo "Not correctly <br>"; ?></div>
+                                    <?php echo "Correct answer: ".$item['first'].'<br>'; ?>
+                                    <?php if (!empty($itemPost[1])): ?>
+                                        <?php echo "Your answer: ".$itemPost[1]; ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if ($item['second'] == mb_strtolower($itemPost[2])): ?>
+                                    <div class="correctly"><?php echo "Correctly <br>"; ?></div>
+                                    <?php echo $item['second']; ?>
+                                <?php else: ?>
+                                    <div class="no-correctly"><?php echo "Not correctly <br>"; ?></div>
+                                    <?php echo "Correct answer: ".$item['second'].'<br>'; ?>
+                                    <?php if (!empty($itemPost[2])): ?>
+                                        <?php echo "Your answer: ".$itemPost[2]; ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if ($item['third'] == mb_strtolower($itemPost[3])): ?>
+                                    <div class="correctly"><?php echo "Correctly <br>"; ?></div>
+                                    <?php echo $item['third']; ?>
+                                <?php else: ?>
+                                    <div class="no-correctly"><?php echo "Not correctly <br>"; ?></div>
+                                    <?php echo "Correct answer: ".$item['third'].'<br>'; ?>
+                                    <?php if (!empty($itemPost[3])): ?>
+                                        <?php echo "Your answer: ".$itemPost[3]; ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                <?php $i = 0; ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <button onClick="window.location='/threeforms';">
+        Try again
+    </button>
+    <script>
+        document.onkeyup = function (e) {
+            e = e || window.event;
+            if (e.keyCode === 13) {
+                window.location='/threeforms';
+            }
+            return false;
+        }
+
+    </script>
+</div>

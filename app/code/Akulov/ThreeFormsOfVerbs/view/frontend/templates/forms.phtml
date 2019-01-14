@@ -4,37 +4,55 @@
 <?php $items = $block->getItems(); ?>
 <?php $itemsRand = $block->getRandomItems(); ?>
 
-<form action="<?php echo $block->getFormAction() ?>" method="post">
-    <table>
-        <tbody>
-        <?php foreach ($itemsRand as $itemRand): ?>
-            <?php foreach ($items as $item): ?>
-                <?php if ($item->getId() == $itemRand): ?>
-                    <tr>
-                        <td>
-                            <?php echo $item->getId(); ?>
-                        </td>
-                        <td>
-                            <?php echo $item['translate']; ?>
-                        </td>
-                        <td>
-                            <?php echo $item['first']; ?>
-                            <input name="first<?php echo $item->getId(); ?>" type="text">
-                        </td>
-                        <td>
-                            <?php echo $item['second']; ?>
-                            <input name="second<?php echo $item->getId(); ?>" type="text">
-                        </td>
-                        <td>
-                            <?php echo $item['third']; ?>
-                            <input name="third<?php echo $item->getId(); ?>" type="text">
-                        </td>
-                    </tr>
-                <?php endif; ?>
+<div class="forms-table">
+    <form action="<?php echo $block->getFormAction() ?>" method="post">
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <?php echo "Number"; ?>
+                </td>
+                <td>
+                    <?php echo "Translate"; ?>
+                </td>
+                <td>
+                    <?php echo "First form"; ?>
+                </td>
+                <td>
+                    <?php echo "Second form"; ?>
+                </td>
+                <td>
+                    <?php echo "Third form"; ?>
+                </td>
+            </tr>
+            <?php foreach ($itemsRand as $itemRand): ?>
+                <?php foreach ($items as $item): ?>
+                    <?php if ($item->getId() == $itemRand): ?>
+                        <tr>
+                            <td>
+                                <?php echo $item->getId(); ?>
+                                <input id="prodId" type="hidden" name="<?php echo $item->getId(); ?>" value="<?php echo $item->getId(); ?>" >
+                            </td>
+                            <td class="translate">
+                                <?php echo $item['translate']; ?>
+                            </td>
+                            <td>
+                                <input name="first<?php echo $item->getId(); ?> " type="text" autocomplete="off">
+                            </td>
+                            <td>
+                                <input name="second<?php echo $item->getId(); ?>" type="text" autocomplete="off">
+                            </td>
+                            <td>
+                                <input name="third<?php echo $item->getId(); ?>" type="text" autocomplete="off">
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             <?php endforeach; ?>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
-    <input name="bookingTime" type="date">
-    <input type="submit" value="Send booking informations">
-</form>
+            </tbody>
+        </table>
+        <button type="submit">
+            Send Three Forms Of Verbs
+        </button>
+    </form>
+</div>

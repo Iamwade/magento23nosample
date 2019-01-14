@@ -38,8 +38,11 @@ class Forms extends Template
         // companymodule is given in routes.xml
         // controller_name is folder name inside controller folder
         // action is php file name inside above controller_name folder
-
-        return '/threeforms/post/post';
+        return '/result/page/view';
         // here controller_name is index, action is booking
+    }
+
+    public function getPostData(){
+        $post = (array)$this->getRequest()->getPost();
     }
 }
