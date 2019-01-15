@@ -4,6 +4,7 @@ namespace Akulov\ThreeFormsOfVerbs\Block;
 
 use Magento\Framework\View\Element\Template;
 use Akulov\ThreeFormsOfVerbs\Model\ResourceModel\Item\CollectionFactory;
+use Magento\Framework\Message\ManagerInterface;
 
 class Forms extends Template
 {
@@ -12,8 +13,10 @@ class Forms extends Template
     public function __construct(
         Template\Context $context,
         CollectionFactory $collectionFactory,
+        ManagerInterface $messageManager,
         array $data = []
     ) {
+        $this->messageManager = $messageManager;
         $this->collectionFactory = $collectionFactory;
         parent::__construct($context, $data);
     }
@@ -45,4 +48,12 @@ class Forms extends Template
     public function getPostData(){
         $post = (array)$this->getRequest()->getPost();
     }
+
+    public function getAssessment($correctly){
+        $percent = (100 * $correctly / 30);
+        return $this->messageManager->addSuccessMessage("Вы ответили правильно на $percent %");
+    }
+
 }
+
+

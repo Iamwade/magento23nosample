@@ -9,9 +9,9 @@
         <table>
             <tbody>
             <tr>
-                <td>
-                    <?php echo "Number"; ?>
-                </td>
+<!--                <td>-->
+<!--                    --><?php //echo "Number"; ?>
+<!--                </td>-->
                 <td>
                     <?php echo "Translate"; ?>
                 </td>
@@ -29,10 +29,10 @@
                 <?php foreach ($items as $item): ?>
                     <?php if ($item->getId() == $itemRand): ?>
                         <tr>
-                            <td>
-                                <?php echo $item->getId(); ?>
+<!--                            <td>-->
+<!--                                --><?php //echo $item->getId(); ?>
                                 <input id="prodId" type="hidden" name="<?php echo $item->getId(); ?>" value="<?php echo $item->getId(); ?>" >
-                            </td>
+<!--                            </td>-->
                             <td class="translate">
                                 <?php echo $item['translate']; ?>
                             </td>
