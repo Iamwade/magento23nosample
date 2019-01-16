@@ -3,21 +3,27 @@
 namespace Akulov\SampleModule\Cron;
 
 use Akulov\SampleModule\Model\ItemFactory;
+use Akulov\SampleModule\Model\Config;
 
 class AddItem
 {
     private $itemFactory;
 
-    public function __construct(ItemFactory $itemFactory)
+    private $config;
+
+    public function __construct(ItemFactory $itemFactory, Config $config)
     {
         $this->itemFactory = $itemFactory;
+        $this->config = $config;
     }
 
     public function execute()
     {
-        $this->itemFactory->create()
-            ->setName('Last Scheduled item')
-            ->setDescription('Created at ' . time())
-            ->save();
+        if ($this->config->isEnabled()) {
+            $this->itemFactory->create()
+                ->setName('Scheduled item')
+                ->setDescription('Created at ' . time())
+                ->save();
+        }
     }
 }
