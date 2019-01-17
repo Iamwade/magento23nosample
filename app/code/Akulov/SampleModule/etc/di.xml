@@ -7,4 +7,6 @@
             </argument>
         </arguments>
     </type>
+    <preference type="Akulov\SampleModule\Model\Item" for="Akulov\SampleModule\Api\Data\ItemInterface"/>
+    <preference type="Akulov\SampleModule\Model\ItemRepository" for="Akulov\SampleModule\Api\ItemRepositoryInterface"/>
 </config>
