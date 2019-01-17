@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="threeforms" frontName="threeforms">
+            <module name="Akulov_ThreeFormsOfVerbs"/>
+        </route>
+        <route id="result" frontName="result">
+            <module name="Akulov_ThreeFormsOfVerbs"/>
+        </route>
+    </router>
+</config>
